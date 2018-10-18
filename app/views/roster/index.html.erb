@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <% @universities.each do |university| %>
+
+            <h1><%= university.name %></h1>
+            <p>Rank: <%= university.rank %></p>
+            <p>Mascot: <%= university.mascot %></p>
+            <ul>
+            <% university.students.each do |student| %>
+                <li>
+                    <p>
+                        <%= student.name %> | GPA: <%= student.gpa %>
+                        <!-- INSERT EDIT STUDENT BUTTON HERE -->
+                        <%= button_to "Edit #{student.name}", edit_student_path(student.id), :method => :get %>
+                    </p>
+
+                </li>
+            <% end %>
+            </ul>
+            <hr />
+        <% end %>
+
+        <!-- INSERT REGISTER NEW STUDENT BUTTON HERE -->
+        <%= button_to "Register new student", 'students/new', :method => :get %>
+    </body>
+</html>
